@@ -345,6 +345,13 @@
             line-height: 1.4;
         }
 
+        .countdown-timer {
+            font-size: 1rem;
+            color: rgb(250, 219, 153) !important;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
         /* Location Section */
         .location {
             background: rgb(0, 45, 42) !important;
@@ -729,6 +736,7 @@
                 <span class="elegant-text">Dino</span>
             </h1>
             <div class="date" data-translate="date">Saturday, July 18, 2026</div>
+            <div class="countdown-timer" id="countdownTimer"></div>
         </div>
         
         <!-- Navigation -->
@@ -879,6 +887,7 @@
                 'schedule-title': 'Wedding Schedule',
                 'schedule-day1': 'Saturday, July 18, 2026',
                 'schedule-day2': 'Sunday, July 19, 2026',
+                'countdown-prefix': 'in',
                 'event-gathering': 'Gathering',
                 'event-ceremony': 'Ceremony',
                 'event-dinner': 'Dinner',
@@ -923,6 +932,7 @@
                 'schedule-title': 'Raspored vjenčanja',
                 'schedule-day1': 'Subota, 18. srpnja 2026.',
                 'schedule-day2': 'Nedjelja, 19. srpnja 2026.',
+                'countdown-prefix': 'za',
                 'event-gathering': 'Okupljanje',
                 'event-ceremony': 'Ceremonija',
                 'event-dinner': 'Večera',
@@ -980,12 +990,44 @@
                     }
                 }
             });
+            
+            // Update countdown timer with new language
+            updateCountdown();
         }
 
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(currentLang);
+            updateCountdown();
+            // Update countdown every minute
+            setInterval(updateCountdown, 60000);
         });
+
+        // Countdown timer function
+        function updateCountdown() {
+            const targetDate = new Date('2026-07-18T15:30:00');
+            const now = new Date();
+            const difference = targetDate - now;
+
+            const countdownElement = document.getElementById('countdownTimer');
+            if (!countdownElement) return;
+
+            if (difference <= 0) {
+                countdownElement.textContent = currentLang === 'en' ? 'The event has started!' : 'Događaj je počeo!';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+            const prefix = currentLang === 'en' ? 'in' : 'za';
+            const daysText = currentLang === 'en' ? 'days' : 'dana';
+            const hrsText = currentLang === 'en' ? 'hrs' : 'sati';
+            const minsText = currentLang === 'en' ? 'mins' : 'min';
+
+            countdownElement.textContent = `${prefix} ${days} ${daysText} ${hours} ${hrsText} ${minutes} ${minsText}`;
+        }
 
         // Copy address function
         function copyAddress() {
