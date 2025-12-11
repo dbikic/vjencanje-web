@@ -682,6 +682,58 @@
             margin-top: 0;
         }
 
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(250, 219, 153, 0.2);
+            border: 1px solid rgba(250, 219, 153, 0.5);
+            color: rgb(250, 219, 153) !important;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: rgba(250, 219, 153, 0.3);
+            border-color: rgba(250, 219, 153, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .scroll-to-top:hover svg {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            .scroll-to-top svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -931,6 +983,13 @@
         <p>&copy; 2026 Katarina & Dino. <span data-translate="footer-text">Made with ❤️</span></p>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
     <script>
         // Translations
         const translations = {
@@ -1065,11 +1124,37 @@
             updateCalendarLinks();
         }
 
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            if (!scrollToTopBtn) return;
+            
+            function toggleScrollToTop() {
+                if (window.pageYOffset > 0) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            window.addEventListener('scroll', toggleScrollToTop);
+            toggleScrollToTop(); // Check initial state
+        }
+
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(currentLang);
             updateCountdown();
             updateCalendarLinks();
+            initScrollToTop();
             // Update countdown every minute
             setInterval(updateCountdown, 60000);
         });
