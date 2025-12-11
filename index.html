@@ -823,8 +823,8 @@
 <body>
     <!-- Language Picker -->
     <div class="language-picker">
-        <button id="lang-en" class="active" onclick="changeLanguage('en')">EN</button>
-        <button id="lang-hr" onclick="changeLanguage('hr')">HR</button>
+        <button id="lang-en" onclick="changeLanguage('en')">EN</button>
+        <button id="lang-hr" class="active" onclick="changeLanguage('hr')">HR</button>
     </div>
 
     <!-- Hero Section -->
@@ -1048,7 +1048,7 @@
                 'nav-about': 'O nama',
                 'nav-schedule': 'Raspored',
                 'nav-location': 'Lokacija',
-                'nav-qa': 'Pitanja i odgovori',
+                'nav-qa': 'Q&A',
                 'nav-calendar': 'Kalendar',
                 'nav-gallery': 'Galerija',
                 'nav-contact': 'Kontakt',
@@ -1077,7 +1077,7 @@
                 'copy-address-copied': 'Kopirano!',
                 'map-placeholder': 'Mapa',
                 'map-instruction': 'Dodajte svoju mapu ovdje',
-                'qa-title': 'Pitanja i odgovori',
+                'qa-title': 'Q&A',
                 'qa-question-1': 'Dress code',
                 'qa-answer-1': 'Drage djevojke dozvoljene su sve boje osim crne. Dragi muškarci, svejedno nam je.',
                 'qa-question-2': 'Potvrda dolaska',
@@ -1095,7 +1095,7 @@
         };
 
         // Current language
-        let currentLang = localStorage.getItem('language') || 'en';
+        let currentLang = localStorage.getItem('language') || 'hr';
 
         // Function to change language
         function changeLanguage(lang) {
