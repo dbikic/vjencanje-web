@@ -352,6 +352,37 @@
             font-weight: 500;
         }
 
+        .calendar-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .add-to-calendar-btn {
+            background: rgba(250, 219, 153, 0.2);
+            border: 1px solid rgba(250, 219, 153, 0.5);
+            color: rgb(250, 219, 153) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .add-to-calendar-btn:hover {
+            background: rgba(250, 219, 153, 0.3);
+            border-color: rgba(250, 219, 153, 0.7);
+            transform: translateY(-2px);
+        }
+
         /* Location Section */
         .location {
             background: rgb(0, 45, 42) !important;
@@ -430,6 +461,12 @@
         /* Q&A Section */
         .qa {
             background: rgb(0, 45, 42) !important;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background: rgb(0, 45, 42) !important;
+            text-align: center;
         }
 
         .qa-container {
@@ -634,6 +671,15 @@
             padding: 2rem;
         }
 
+        footer .calendar-buttons {
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        footer .add-to-calendar-btn {
+            margin-top: 0;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -743,10 +789,10 @@
         <nav id="navbar">
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul id="navMenu">
-                <li><a href="#home" data-translate="nav-home">Home</a></li>
                 <li><a href="#schedule" data-translate="nav-schedule">Schedule</a></li>
                 <li><a href="#location" data-translate="nav-location">Location</a></li>
                 <li><a href="#qa" data-translate="nav-qa">Q & A</a></li>
+                <li><a href="#calendar" data-translate="nav-calendar">Calendar</a></li>
             </ul>
         </nav>
 
@@ -837,7 +883,7 @@
     <!-- Q&A Section -->
     <section class="qa" id="qa">
         <h2 class="section-title elegant-text" data-translate="qa-title">Questions & Answers</h2>
-        <parameter name="new_string">        <div class="qa-container">
+        <div class="qa-container">
             <div class="qa-item">
                 <div class="qa-question" data-translate="qa-question-1">Dress code</div>
                 <div class="qa-answer">
@@ -865,6 +911,19 @@
         </div>
     </section>
 
+    <!-- Calendar Section -->
+    <section class="calendar-section" id="calendar">
+        <h2 class="section-title elegant-text" data-translate="calendar-title">Calendar</h2>
+        <div class="calendar-buttons">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katarina%20%26%20Dino%20Wedding&dates=20260718T153000/20260719T010000&location=Villa%20Lav%2C%20Grote%2025%2C%2052211%20Bale" class="add-to-calendar-btn google-calendar-link" target="_blank">
+                <span>📅</span> <span data-translate="add-to-calendar-google">Google Calendar</span>
+            </a>
+            <button onclick="downloadAppleCalendar()" class="add-to-calendar-btn" type="button">
+                <span>📅</span> <span data-translate="add-to-calendar-apple">Apple Calendar</span>
+            </button>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Katarina & Dino. <span data-translate="footer-text">Made with ❤️</span></p>
@@ -876,11 +935,11 @@
             en: {
                 'date': 'Saturday, July 18, 2026',
                 'subtitle': 'We can\'t wait to celebrate with you',
-                'nav-home': 'Home',
                 'nav-about': 'About',
                 'nav-schedule': 'Schedule',
                 'nav-location': 'Location',
                 'nav-qa': 'Q & A',
+                'nav-calendar': 'Calendar',
                 'nav-gallery': 'Gallery',
                 'nav-contact': 'Contact',
                 'about-subtitle': 'Dear friends, we invite you to be part of our special day.',
@@ -888,6 +947,9 @@
                 'schedule-day1': 'Saturday, July 18, 2026',
                 'schedule-day2': 'Sunday, July 19, 2026',
                 'countdown-prefix': 'in',
+                'add-to-calendar-google': 'Google Calendar',
+                'add-to-calendar-apple': 'Apple Calendar',
+                'calendar-event-title': 'Katarina & Dino Wedding',
                 'event-gathering': 'Gathering',
                 'event-ceremony': 'Ceremony',
                 'event-dinner': 'Dinner',
@@ -913,6 +975,7 @@
                 'qa-question-4': 'How to confirm attendance?',
                 'qa-answer-4': 'You can confirm via WhatsApp, phone, or in person. And please let us know if you have any food allergies or want a vegetarian menu.',
                 'qa-question-3': 'Accommodation',
+                'calendar-title': 'Calendar',
                 'qa-answer-3': 'For accommodation, we recommend:<br>• Hotel La Grisa<br>• Istra Soley<br>• Andresita Palace',
                 'contact-title': 'Contact Us',
                 'contact-text': 'If you have any questions, please don\'t hesitate to reach out to us.',
@@ -921,11 +984,11 @@
             },
             hr: {
                 'date': 'Subota, 18. srpnja 2026.',
-                'nav-home': 'Početna',
                 'nav-about': 'O nama',
                 'nav-schedule': 'Raspored',
                 'nav-location': 'Lokacija',
                 'nav-qa': 'Pitanja i odgovori',
+                'nav-calendar': 'Kalendar',
                 'nav-gallery': 'Galerija',
                 'nav-contact': 'Kontakt',
                 'about-subtitle': 'Dragi prijatelji, pozivamo vas da budete dio našeg posebnog dana.',
@@ -933,6 +996,9 @@
                 'schedule-day1': 'Subota, 18. srpnja 2026.',
                 'schedule-day2': 'Nedjelja, 19. srpnja 2026.',
                 'countdown-prefix': 'za',
+                'add-to-calendar-google': 'Google Kalendar',
+                'add-to-calendar-apple': 'Apple Kalendar',
+                'calendar-event-title': 'Vjenčanje Katarine i Dina',
                 'event-gathering': 'Okupljanje',
                 'event-ceremony': 'Ceremonija',
                 'event-dinner': 'Večera',
@@ -958,6 +1024,7 @@
                 'qa-question-4': 'Kako potvrditi dolazak?',
                 'qa-answer-4': 'Može preko Whatsupa, telefona, uživo. I molim vas javite da li imate kakvu alergiju na hranu ili želite vegeterijanski menu.',
                 'qa-question-3': 'Smještaj',
+                'calendar-title': 'Kalendar',
                 'qa-answer-3': 'Za smještaj su nam preporučili:<br>• Hotel La Grisa<br>• Istra Soley<br>• Andresita Palace',
                 'contact-title': 'Kontaktirajte nas',
                 'contact-text': 'Ako imate bilo kakva pitanja, slobodno nas kontaktirajte.',
@@ -993,12 +1060,14 @@
             
             // Update countdown timer with new language
             updateCountdown();
+            updateCalendarLinks();
         }
 
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(currentLang);
             updateCountdown();
+            updateCalendarLinks();
             // Update countdown every minute
             setInterval(updateCountdown, 60000);
         });
@@ -1027,6 +1096,46 @@
             const minsText = currentLang === 'en' ? 'mins' : 'min';
 
             countdownElement.textContent = `${prefix} ${days} ${daysText} ${hours} ${hrsText} ${minutes} ${minsText}`;
+        }
+
+        // Update Google Calendar links
+        function updateCalendarLinks() {
+            const eventTitle = translations[currentLang]['calendar-event-title'];
+            const encodedTitle = encodeURIComponent(eventTitle);
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodedTitle}&dates=20260718T153000/20260719T010000&location=Villa%20Lav%2C%20Grote%2025%2C%2052211%20Bale`;
+            
+            const googleLinks = document.querySelectorAll('.google-calendar-link');
+            googleLinks.forEach(link => {
+                if (link) {
+                    link.href = calendarUrl;
+                }
+            });
+        }
+
+        // Download Apple Calendar ICS file
+        function downloadAppleCalendar() {
+            const eventTitle = translations[currentLang]['calendar-event-title'];
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Katarina & Dino Wedding//EN
+BEGIN:VEVENT
+UID:katarina-dino-wedding@wedding.com
+DTSTAMP:20260101T000000Z
+DTSTART:20260718T153000
+DTEND:20260719T010000
+SUMMARY:${eventTitle}
+LOCATION:Villa Lav, Grote 25, 52211 Bale
+END:VEVENT
+END:VCALENDAR`;
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Katarina-Dino-Wedding.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
         }
 
         // Copy address function
