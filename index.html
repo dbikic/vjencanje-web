@@ -577,6 +577,48 @@
             opacity: 0.8;
         }
 
+        /* Copy Address Button */
+        .address-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .address-text {
+            flex: 1;
+        }
+
+        .copy-address-btn {
+            background: rgba(250, 219, 153, 0.2);
+            border: 1px solid rgba(250, 219, 153, 0.5);
+            color: rgb(250, 219, 153) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-address-btn:hover {
+            background: rgba(250, 219, 153, 0.3);
+            border-color: rgba(250, 219, 153, 0.7);
+        }
+
+        .copy-address-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-address-btn.copied {
+            background: rgba(250, 219, 153, 0.4);
+            border-color: rgb(250, 219, 153);
+        }
+
         /* Footer */
         footer {
             background: var(--secondary-color);
@@ -750,18 +792,17 @@
         <div class="location-content">
             <div class="location-info">
                 <h3 data-translate="location-info-title">Venue Information</h3>
-                <p data-translate="location-info-text">
-                    The ceremony and reception will be held at a beautiful venue surrounded by nature. 
-                    We've chosen this location for its elegance and charm.
-                </p>
                 <p>
                     <strong data-translate="location-address-label">Address:</strong><br>
-                    [Venue Address]<br>
-                    [City, Country]
+                    <span class="address-container">
+                        <span class="address-text">Villa Lav, Grote 25, 52211 Bale</span>
+                        <button class="copy-address-btn" id="copyAddressBtn" onclick="copyAddress()">
+                            <span id="copyBtnText">📋</span> <span id="copyBtnLabel" data-translate="copy-address">Copy</span>
+                        </button>
+                    </span>
                 </p>
                 <p>
                     <strong data-translate="location-parking-label">Parking:</strong> <span data-translate="location-parking-text">Available on-site</span><br>
-                    <strong data-translate="location-accommodations-label">Accommodations:</strong> <span data-translate="location-accommodations-text">Nearby hotels available</span>
                 </p>
             </div>
             <div class="location-map">
@@ -788,53 +829,29 @@
     <!-- Q&A Section -->
     <section class="qa" id="qa">
         <h2 class="section-title elegant-text" data-translate="qa-title">Questions & Answers</h2>
-        <div class="qa-container">
+        <parameter name="new_string">        <div class="qa-container">
             <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-1">What time should I arrive?</div>
+                <div class="qa-question" data-translate="qa-question-1">Dress code</div>
                 <div class="qa-answer">
-                    <p data-translate="qa-answer-1">Please arrive 15-30 minutes before the ceremony begins. The ceremony starts at 4:00 PM.</p>
+                    <p data-translate="qa-answer-1">Drage djevojke dozvoljene su sve boje osim crne. Dragi muškarci, svejedno nam je.</p>
                 </div>
             </div>
             <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-2">What is the dress code?</div>
+                <div class="qa-question" data-translate="qa-question-2">Potvrda dolaska</div>
                 <div class="qa-answer">
-                    <p data-translate="qa-answer-2">We'd love to see our family and friends dressed up for our special day! Cocktail attire is preferred. Please avoid wearing white.</p>
+                    <p data-translate="qa-answer-2">Molim vas potvrdite nam dolazak do 01.02.2026.</p>
                 </div>
             </div>
             <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-3">Can I bring a plus one?</div>
+                <div class="qa-question" data-translate="qa-question-4">Kako potvrditi dolazak?</div>
                 <div class="qa-answer">
-                    <p data-translate="qa-answer-3">Please check your invitation for the number of guests included. If you have any questions, please contact us directly.</p>
+                    <p data-translate="qa-answer-4">Može preko Whatsupa, telefona, uživo. I molim vas javite da li imate kakvu alergiju na hranu ili želite vegeterijanski menu.</p>
                 </div>
             </div>
             <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-4">Will the ceremony and reception be at the same location?</div>
+                <div class="qa-question" data-translate="qa-question-3">Smještaj</div>
                 <div class="qa-answer">
-                    <p data-translate="qa-answer-4">Yes, both the ceremony and reception will be held at the same venue. There will be a cocktail hour between the ceremony and reception.</p>
-                </div>
-            </div>
-            <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-5">Is there parking available?</div>
-                <div class="qa-answer">
-                    <p data-translate="qa-answer-5">Yes, parking is available on-site at the venue. Please follow the signs upon arrival.</p>
-                </div>
-            </div>
-            <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-6">What if I have dietary restrictions?</div>
-                <div class="qa-answer">
-                    <p data-translate="qa-answer-6">Please let us know about any dietary restrictions or allergies when you RSVP, and we'll make sure to accommodate your needs.</p>
-                </div>
-            </div>
-            <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-7">Are children welcome?</div>
-                <div class="qa-answer">
-                    <p data-translate="qa-answer-7">While we love your little ones, we've decided to have an adults-only celebration. We appreciate your understanding!</p>
-                </div>
-            </div>
-            <div class="qa-item">
-                <div class="qa-question" data-translate="qa-question-8">What happens if it rains?</div>
-                <div class="qa-answer">
-                    <p data-translate="qa-answer-8">The venue has both indoor and outdoor spaces. In case of rain, the ceremony will be moved indoors. We'll keep you updated!</p>
+                    <p data-translate="qa-answer-3">Za smještaj su nam preporučili:<br>• Hotel La Grisa<br>• Istra Soley<br>• Andresita Palace</p>
                 </div>
             </div>
         </div>
@@ -866,34 +883,28 @@
                 'event-ceremony': 'Ceremony',
                 'event-dinner': 'Dinner',
                 'dinner-subtitle': 'Please let us know if you have any food allergies or want a vegetarian menu.',
-                'event-fajrund': 'Fajrund',
+                'event-fajrund': 'The End',
                 'location-title': 'Location',
                 'location-info-title': 'Venue Information',
                 'location-info-text': 'The ceremony and reception will be held at a beautiful venue surrounded by nature. We\'ve chosen this location for its elegance and charm.',
                 'location-address-label': 'Address:',
                 'location-parking-label': 'Parking:',
-                'location-parking-text': 'Available on-site',
+                'location-parking-text': 'Parking spaces are available in the immediate vicinity of the villa.',
                 'location-accommodations-label': 'Accommodations:',
                 'location-accommodations-text': 'Nearby hotels available',
+                'copy-address': 'Copy',
+                'copy-address-copied': 'Copied!',
                 'map-placeholder': 'Map Placeholder',
                 'map-instruction': 'Add your map embed here',
                 'qa-title': 'Questions & Answers',
-                'qa-question-1': 'What time should I arrive?',
-                'qa-answer-1': 'Please arrive 15-30 minutes before the ceremony begins. The ceremony starts at 4:00 PM.',
-                'qa-question-2': 'What is the dress code?',
-                'qa-answer-2': 'We\'d love to see our family and friends dressed up for our special day! Cocktail attire is preferred. Please avoid wearing white.',
-                'qa-question-3': 'Can I bring a plus one?',
-                'qa-answer-3': 'Please check your invitation for the number of guests included. If you have any questions, please contact us directly.',
-                'qa-question-4': 'Will the ceremony and reception be at the same location?',
-                'qa-answer-4': 'Yes, both the ceremony and reception will be held at the same venue. There will be a cocktail hour between the ceremony and reception.',
-                'qa-question-5': 'Is there parking available?',
-                'qa-answer-5': 'Yes, parking is available on-site at the venue. Please follow the signs upon arrival.',
-                'qa-question-6': 'What if I have dietary restrictions?',
-                'qa-answer-6': 'Please let us know about any dietary restrictions or allergies when you RSVP, and we\'ll make sure to accommodate your needs.',
-                'qa-question-7': 'Are children welcome?',
-                'qa-answer-7': 'While we love your little ones, we\'ve decided to have an adults-only celebration. We appreciate your understanding!',
-                'qa-question-8': 'What happens if it rains?',
-                'qa-answer-8': 'The venue has both indoor and outdoor spaces. In case of rain, the ceremony will be moved indoors. We\'ll keep you updated!',
+                'qa-question-1': 'Dress code',
+                'qa-answer-1': 'Dear girls, all colors are allowed except black. Dear gentlemen, we don\'t mind.',
+                'qa-question-2': 'RSVP',
+                'qa-answer-2': 'Please confirm your attendance by February 1, 2026.',
+                'qa-question-4': 'How to confirm attendance?',
+                'qa-answer-4': 'You can confirm via WhatsApp, phone, or in person. And please let us know if you have any food allergies or want a vegetarian menu.',
+                'qa-question-3': 'Accommodation',
+                'qa-answer-3': 'For accommodation, we recommend:<br>• Hotel La Grisa<br>• Istra Soley<br>• Andresita Palace',
                 'contact-title': 'Contact Us',
                 'contact-text': 'If you have any questions, please don\'t hesitate to reach out to us.',
                 'contact-closing': 'We can\'t wait to celebrate with you!',
@@ -922,28 +933,22 @@
                 'location-info-text': 'Ceremonija i prijem održat će se na prekrasnom prostoru okruženom prirodom. Odabrali smo ovu lokaciju zbog njezine elegancije i šarma.',
                 'location-address-label': 'Adresa:',
                 'location-parking-label': 'Parkiranje:',
-                'location-parking-text': 'Dostupno na licu mjesta',
+                'location-parking-text': 'Mjesta za parkiranje dostupna su u neposrednoj blizini vile.',
                 'location-accommodations-label': 'Smještaj:',
                 'location-accommodations-text': 'U blizini dostupni hoteli',
+                'copy-address': 'Kopiraj',
+                'copy-address-copied': 'Kopirano!',
                 'map-placeholder': 'Mapa',
                 'map-instruction': 'Dodajte svoju mapu ovdje',
                 'qa-title': 'Pitanja i odgovori',
-                'qa-question-1': 'U koliko sati trebam doći?',
-                'qa-answer-1': 'Molimo vas da stignete 15-30 minuta prije početka ceremonije. Ceremonija počinje u 16:00.',
-                'qa-question-2': 'Koji je dress code?',
-                'qa-answer-2': 'Voljeli bismo vidjeti našu obitelj i prijatelje lijepo obučene za naš poseban dan! Preporučujemo koktel odjeću. Molimo izbjegavajte bijelu boju.',
-                'qa-question-3': 'Mogu li dovesti pratnju?',
-                'qa-answer-3': 'Molimo provjerite na pozivnici koliko je gostiju uključeno. Ako imate pitanja, slobodno nas kontaktirajte.',
-                'qa-question-4': 'Hoće li ceremonija i prijem biti na istoj lokaciji?',
-                'qa-answer-4': 'Da, i ceremonija i prijem održat će se na istom prostoru. Između ceremonije i prijema bit će koktel sat.',
-                'qa-question-5': 'Ima li parkiralište?',
-                'qa-answer-5': 'Da, parkiranje je dostupno na licu mjesta. Molimo slijedite znakove po dolasku.',
-                'qa-question-6': 'Što ako imam prehrambena ograničenja?',
-                'qa-answer-6': 'Molimo vas da nam javite o bilo kakvim prehrambenim ograničenjima ili alergijama kada potvrdite dolazak, i osigurat ćemo da vaše potrebe budu zadovoljene.',
-                'qa-question-7': 'Jesu li djeca dobrodošla?',
-                'qa-answer-7': 'Iako volimo vašu malu djecu, odlučili smo imati proslavu samo za odrasle. Cijenimo vaše razumijevanje!',
-                'qa-question-8': 'Što ako pada kiša?',
-                'qa-answer-8': 'Prostor ima i unutarnje i vanjske prostore. U slučaju kiše, ceremonija će biti premještena unutra. Obavijestit ćemo vas!',
+                'qa-question-1': 'Dress code',
+                'qa-answer-1': 'Drage djevojke dozvoljene su sve boje osim crne. Dragi muškarci, svejedno nam je.',
+                'qa-question-2': 'Potvrda dolaska',
+                'qa-answer-2': 'Molim vas potvrdite nam dolazak do 01.02.2026.',
+                'qa-question-4': 'Kako potvrditi dolazak?',
+                'qa-answer-4': 'Može preko Whatsupa, telefona, uživo. I molim vas javite da li imate kakvu alergiju na hranu ili želite vegeterijanski menu.',
+                'qa-question-3': 'Smještaj',
+                'qa-answer-3': 'Za smještaj su nam preporučili:<br>• Hotel La Grisa<br>• Istra Soley<br>• Andresita Palace',
                 'contact-title': 'Kontaktirajte nas',
                 'contact-text': 'Ako imate bilo kakva pitanja, slobodno nas kontaktirajte.',
                 'contact-closing': 'Jedva čekamo proslaviti s vama!',
@@ -967,7 +972,12 @@
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    // Check if translation contains HTML (like <br> tags)
+                    if (translations[lang][key].includes('<br>') || translations[lang][key].includes('<')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
                 }
             });
         }
@@ -976,6 +986,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(currentLang);
         });
+
+        // Copy address function
+        function copyAddress() {
+            const address = 'Villa Lav, Grote 25, 52211 Bale';
+            const copyBtn = document.getElementById('copyAddressBtn');
+            const copyBtnText = document.getElementById('copyBtnText');
+            const copyBtnLabel = document.getElementById('copyBtnLabel');
+            
+            navigator.clipboard.writeText(address).then(() => {
+                // Visual feedback
+                copyBtn.classList.add('copied');
+                const originalText = copyBtnText.textContent;
+                const originalLabel = copyBtnLabel.textContent;
+                
+                copyBtnText.textContent = '✓';
+                copyBtnLabel.textContent = currentLang === 'en' ? 'Copied!' : 'Kopirano!';
+                
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtnText.textContent = originalText;
+                    copyBtnLabel.textContent = originalLabel;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy address:', err);
+                alert('Failed to copy address. Please copy manually: ' + address);
+            });
+        }
 
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
